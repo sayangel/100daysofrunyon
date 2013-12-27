@@ -1,0 +1,34 @@
+#main {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.is-img {
+  width: 446px;
+  border-radius: 5px;
+  margin-top: 45px;
+}
+
+.is-title {
+  font-size: 13px;
+}
+
+#trending {
+  position: absolute;
+  top: 150px;
+}
+
+#trending li {
+  list-style-type: none;
+}
+
+#startStream {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
+
+#logo {
+  width: 180px;
+  vertical-align: top;
+}
