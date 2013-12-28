@@ -10,7 +10,7 @@ app.use(express.logger());
 app.use(express.bodyParser());
 app.use(express.static(__dirname));
 ig.use({
-  access_token: '5d4993b79c3e7697063c0dd5905d4c7f8f4c3a6537150f1688512de7e58bf429'
+  access_token: '31053657.6641612.791281325ada43b388f32ce913603161'
 });
 
 var server = require('http').Server(app);
@@ -22,7 +22,34 @@ var getInstaPics = function(socket) {
 
 app.get('/', function(req, res) {
 
-  res.send('Coding something...');
+    var getIG = function(err, result, pagination, limit) {
+      var initialData = [];
+      console.log(err);
+      console.log(pagination);
+      console.log(result);
+      for(var i = 0; i < result.length; i++)
+      {
+        var imgURL = result[i].images.standard_resolution.url;
+        console.log(imgURL);  
+        initialData.push(result[i]);
+      }
+      if(pagination.next)
+      {
+        pagination.next(getIG);
+      }
+
+      //After gathering image URLs send them over to the page
+      console.log(initialData);
+      res.render('index.ejs', {data: initialData});
+    
+    };
+
+  //Get pictures tagged at Runyon Canyon
+  //Can add additional gets such as tagged #runyon #100daysofrunyon or geotagged: runyon canyon park
+  ig.location_media_recent('1539520', getIG); 
+
+
+  //res.send('Coding something...');
 });
 
 var port = process.env.PORT || 5000;
