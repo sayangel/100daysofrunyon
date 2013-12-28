@@ -1,31 +1,49 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
+  <link rel="shortcut icon" href="favicon.png" />
   <meta charset="UTF-8">
-  <title>100 Days of Runyon</title>
+  <title>#100DaysOfRunyon</title>
   <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script type="text/javascript" src="countdown.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+  
   <link href="/stylesheets/Flat-UI-master/bootstrap/css/bootstrap.css" rel="stylesheet">
   <link href="/stylesheets/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 
   <script>
   </script>
 </head>
 <body>
-
+    <div id="countdown">
+      <script type="application/javascript">
+      var test1 = new Countdown({
+                rangeHi:"day",
+                width:300, 
+                height:60, 
+                year  : 2014, 
+                month : 1, 
+                day   : 1, 
+                hour  : 0,
+                ampm  : "am",
+                minute  : 0, 
+                second  : 0,
+              });
+      </script>
+  </div>
   <div id="main">
-    <h1>100 Days of Runyon</h1>
+    <h1>#100DaysOfRunyon</h1>
+
     <% for(var i = 0; i < data.length; i++) { %>
       <div class="is">
-        <img src="<%= data[i].images.standard_resolution.url %>" class="is-img" />
-        <p class="is-title"><%= data[i].caption.text %></p>
+        <a href="<%= data[i].link %>"> <img src="<%= data[i].images.standard_resolution.url %>" class="is-img" /> </a>
+        <h1 class="is-title"><%= data[i].caption.text %></h1>
       </div>
     <% } %>
 
-    <p id="about">Built by <a href="https://github.com/sayangel">@sayangel</a> and <a href="https://github.com/kingkumar">@kingkumar</a>.</p>
+    <p id="about"><a href="https://twitter.com/sayangel">@sayangel</a></p>
   </div>
 
   <script src="/stylesheets/Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js"></script>

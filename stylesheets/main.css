@@ -1,12 +1,35 @@
+body
+{ 
+background-image:url('../bg.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+}
+
+h1
+{
+  color: #FFFFFF;
+}
+
+#countdown {
+  position: fixed;
+
+}
+
 #main {
-  width: 450px;
+  width: 650px;
   margin: 0 auto;
+  background-color:rgba(0,0,0,0.6);
+  border-radius: 20px;
+  text-align: center;
 }
 
 .is-img {
+  display:block;
   width: 446px;
   border-radius: 5px;
   margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .is-title {

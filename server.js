@@ -24,19 +24,19 @@ app.get('/', function(req, res) {
 
     var getIG = function(err, result, pagination, limit) {
       var initialData = [];
-      console.log(err);
-      console.log(pagination);
-      console.log(result);
+      //console.log(err);
+      //console.log(pagination);
+      //console.log(result);
       for(var i = 0; i < result.length; i++)
       {
         var imgURL = result[i].images.standard_resolution.url;
         console.log(imgURL);  
         initialData.push(result[i]);
       }
-      if(pagination.next)
+      /*if(pagination.next)
       {
         pagination.next(getIG);
-      }
+      }*/
 
       //After gathering image URLs send them over to the page
       console.log(initialData);
@@ -46,7 +46,7 @@ app.get('/', function(req, res) {
 
   //Get pictures tagged at Runyon Canyon
   //Can add additional gets such as tagged #runyon #100daysofrunyon or geotagged: runyon canyon park
-  ig.location_media_recent('1539520', getIG); 
+  ig.location_media_recent('144304', getIG); 
 
 
   //res.send('Coding something...');
