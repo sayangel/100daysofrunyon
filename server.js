@@ -15,7 +15,7 @@ ig.use({
 
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
-var stream; // dat BIG STREAM
+var stream;
 
 var getInstaPics = function(socket) {
 };
@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
       for(var i = 0; i < result.length; i++)
       {
         var imgURL = result[i].images.standard_resolution.url;
-        console.log(imgURL);  
+        //console.log(imgURL);  
         initialData.push(result[i]);
       }
       /*if(pagination.next)
@@ -39,13 +39,20 @@ app.get('/', function(req, res) {
       }*/
 
       //After gathering image URLs send them over to the page
-      console.log(initialData);
-      res.render('index.ejs', {data: initialData});
+      //console.log(initialData);
+      ig.tag('100daysofrunyon', function(err, result, limit) {
+        console.log(result)
+        var tagCount = result.media_count;
+        res.render('index.ejs', {data: initialData, count: tagCount});
+      });
+      
+
     
     };
 
   //Get pictures tagged at Runyon Canyon
   //Can add additional gets such as tagged #runyon #100daysofrunyon or geotagged: runyon canyon park
+
   ig.location_media_recent('144304', getIG); 
 
 
