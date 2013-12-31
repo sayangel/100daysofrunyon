@@ -4,8 +4,7 @@
   <link rel="shortcut icon" href="favicon.png" />
   <meta charset="UTF-8">
   <title>#100DaysOfRunyon</title>
-  <script src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="countdown.js"></script>
 
   
@@ -37,22 +36,23 @@
     <h1>#100DaysOfRunyon</h1>
     <h3>100 days. 100 Pictures. Let's go.</h3>
     <h3>Pictures Tagged: <%= count %> / 10,000</h3>
-
-    <% for(var i = 0; i < data.length; i++) { %>
-      <div class="is">
-        <a href="<%= data[i].link %>"> <img src="<%= data[i].images.standard_resolution.url %>" class="is-img" /> </a>
-        <h1 class="is-title">
-          <% if(data[i].caption) { %>
-              <%= data[i].caption.text %>
-          <% } else { %>
-              <%= "" %>
-          <% } %>
-        </h1>
-      </div>
-    <% } %>
-
+    <div id = "instafeed">
+      <% for(var i = 0; i < data.length; i++) { %>
+        <div class="is">
+          <a href="<%= data[i].link %>"> <img src="<%= data[i].images.standard_resolution.url %>" class="is-img" /> </a>
+          <h1 class="is-title">
+            <% if(data[i].caption) { %>
+                <%= data[i].caption.text %>
+            <% } else { %>
+                <%= "" %>
+            <% } %>
+          </h1>
+        </div>
+      <% } %>
+    </div>
     <p id="about">Brought to you by <a href="https://twitter.com/sayangel">@sayangel</a></p>
   </div>
+
 
   <script src="/stylesheets/Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="/stylesheets/Flat-UI-master/js/jquery.ui.touch-punch.min.js"></script>
@@ -63,5 +63,6 @@
   <script src="/stylesheets/Flat-UI-master/js/flatui-radio.js"></script>
   <script src="/stylesheets/Flat-UI-master/js/jquery.tagsinput.js"></script>
   <script src="/stylesheets/Flat-UI-master/js/jquery.placeholder.js"></script>
+
 </body>
 </html>

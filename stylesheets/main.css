@@ -22,8 +22,10 @@ h1,h2,h3,p
   background-color:rgba(0,0,0,0.6);
   border-radius: 20px;
   text-align: center;
+  padding-top: 15px;
   padding-right:25px;
   padding-left:25px;
+  padding-bottom:15px;
 }
 
 .is-img {
