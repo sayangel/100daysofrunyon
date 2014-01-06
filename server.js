@@ -43,14 +43,16 @@ app.get('/', function(req, res) {
       ig.tag('100daysofrunyon', function(err, result, limit) {
         console.log(result)
         var tagCount = result.media_count;
+        var taggedPics = [];
         ig.tag_media_recent('100daysofrunyon', function(err, medias, pagination, limit) {
         for(var i = 0; i < medias.length; i++)
           {
             //console.log(imgURL);  
             console.log(medias[i]);
-            initialData.unshift(medias[i]);
+            taggedPics.push(medias[i]);
           }
-          res.render('index.ejs', {data: initialData, count: tagCount});
+          var dataToPush = taggedPics.concat(initialData)
+          res.render('index.ejs', {data: dataToPush, count: tagCount});
         });
         
       });
